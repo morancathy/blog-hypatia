@@ -4,6 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 const mongoose = require('mongoose');
 const path = require('path');
+const blogController = require('./controllers/blogs')
 
 const MONGODB_URI = process.env.MONGODB_URI
 const db = mongoose.connection;
@@ -22,12 +23,7 @@ if (process.env.NODE_ENV !== 'development'){
 }
 
 /* Controller Goes Here Remove the tes*/
-app.get('/test', (req, res)=>{
-	res.status(200).json({
-		website: 'My Website',
-		info: 'Not that much'
-	})
-})
+app.use('/api/blogs', blogController)
 /* Controller Ends here */
 //LISTENER
 
@@ -36,6 +32,8 @@ app.get('/test', (req, res)=>{
 app.get('*', (req, res) => {
 	res.sendFile(path.resolve(path.join(__dirname, 'public', 'index.html')))
 })
+//a catch all, if it isnt api/blog then it must be part of react and
+
 
 app.listen(PORT, () => {
     console.log(`API Listening on port ${PORT}`);
