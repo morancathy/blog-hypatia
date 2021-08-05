@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Home(props) {
-	const [blogs, setBlogs] = useState([]); //the array will get stuck inside of blogs
-	//rerender when state is updated...rerender means return runs again
+	const [blogs, setBlogs] = useState([]);
 
 	useEffect(() => {
 		(async () => {
@@ -16,6 +15,7 @@ export default function Home(props) {
 			}
 		})();
 	}, []);
+
 	return (
 		<div className="HomePage">
 			<ul>
@@ -33,3 +33,6 @@ export default function Home(props) {
 		</div>
 	);
 }
+
+//const [blogs, setBlogs] = useState([]); //the array will get stuck inside of blogs
+//rerender when state is updated...rerender means return runs again

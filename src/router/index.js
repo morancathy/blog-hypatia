@@ -3,6 +3,7 @@ import NavBar from '../components/NavBar';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Show from '../pages/Post';
 import routes from './routes';
+
 const AppRouter = () => {
 	return (
 		<Router>

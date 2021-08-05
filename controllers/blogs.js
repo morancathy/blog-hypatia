@@ -1,5 +1,3 @@
-//this is where we create json data
-
 const Blog = require('../models/blog');
 const Comment = require('../models/comment');
 const router = require('express').Router();

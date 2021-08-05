@@ -25,6 +25,7 @@ if (process.env.NODE_ENV !== 'development'){
 /* Controller Goes Here Remove the tes*/
 app.use('/api/blogs', blogController)
 /* Controller Ends here */
+
 //LISTENER
 
 
@@ -32,7 +33,9 @@ app.use('/api/blogs', blogController)
 app.get('*', (req, res) => {
 	res.sendFile(path.resolve(path.join(__dirname, 'public', 'index.html')))
 })
-//a catch all, if it isnt api/blog then it must be part of react and
+//a catch all, if it isnt api/blog or isnt file inside public folder, then it must be part of react and
+//we are not redircting..we are resending.
+//refresh page...going to refresh server at route page
 
 
 app.listen(PORT, () => {
@@ -41,7 +44,7 @@ app.listen(PORT, () => {
 
 
 
-/* Vanilla Node Server
+/* Vanilla Node Server  ...this is in place of (express.static('public'))
 const http = require('http'); // The node http module allow you to create servers
 const fs = require('fs'); // The node file system module allows you to create files and interact with file system
 const path = require('path'); // path allows you to get the path of a folder etc.
